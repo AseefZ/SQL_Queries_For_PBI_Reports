@@ -1,0 +1,4 @@
+select mr.meter_reading_no, mr.meter_reading, mr.auth_object_no, mr.sp_object_no,o.object_name, ot.object_desc , mr.date_entered, mr.date_effective, mr.date_retired, mr.metered_usage, mr.adjustment_value, mr.reason_type, mr.party_no, mr.entry_method, mr.read_by, mr.read_by_party_no, mr.adjustment_date, mr.adjustment_by_party_no, mr.accepted_date, mr.accepted_by_party_no,
+asset_code.attribute_value as asset_id
+from meter_reading mr left outer join object_attr_value asset_code on mr.sp_object_no = asset_code.object_no and asset_code.date_retired is null and asset_code.attribute_type = 117
+join object o on mr.sp_object_no = o.object_no join object_type ot on o.object_type = ot.object_type
