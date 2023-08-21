@@ -1,0 +1,12 @@
+SELECT o.object_no "Object No", o.object_name, ot.OBJECT_TYPE, OBJECT_DESC, t.TAG_NAME, v117.attribute_value "Asset Code" FROM OBJECT o
+
+LEFT OUTER JOIN object_attr_value v117 ON v117.object_no = o.object_no
+AND v117.attribute_type = 117
+AND v117.DATE_RETIRED IS NULL
+JOIN OBJECT_TYPE ot on o.OBJECT_TYPE = ot.OBJECT_TYPE
+AND ot.OBJECT_DESC IN ('REGULATOR', 'HYBRID_R', 'OFFTAKE', 'SLIPMETER R', 'SLIPGATE R', 'FLUMEGATE R', 'MULTIGATE_R', 'BLADEMETER R', 'BRIDGE')
+JOIN SC_TAG t ON o.OBJECT_NO = t.OBJECT_NO
+AND TAG_NAME = 'COMM_STATUS' 
+
+
+
